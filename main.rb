@@ -16,7 +16,8 @@ Dir.chdir("../dwm")
 system "sudo make clean install"
 
 system "sudo mkdir -p /usr/local/share/fonts/"
-system "cp /Dwm-Scripts/JetBrainsMonoNerdFont-Regular.ttf /usr/local/share/fonts/"
+system "cp /Dwm-Script/JetBrainsMonoNerdFont-Regular.ttf /usr/local/share/fonts/"
+system "fc-cache -fv"
 
 st_path = `which st`.strip
 
