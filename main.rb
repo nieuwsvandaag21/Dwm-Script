@@ -29,7 +29,7 @@ system "sudo mkdir -p /usr/local/share/fonts/"
 system "cp ~/Dwm-Script/JetBrainsMonoNerdFont-Regular.ttf /usr/local/share/fonts/"
 system "fc-cache -fv"
 
-Dir.chdir("/dwm")
+Dir.chdir("dwm")
 st_path     = `which st`.strip
 config_path = "config.h"
 content     = File.read(config_path)
@@ -39,10 +39,6 @@ updated = content.gsub(
   "#define SHCMD(cmd) { .v = (const char*[]){ \"#{st_path}\", \"-c\", cmd, NULL } }"
 )
 
-updated = updated.gsub(
-  /static const char fonts\[\]\s*=\s*\{[^}]*\};/,
-  'static const char *fonts[] = { "JetBrainsMono Nerd Font:size=26" };'
-)
 
-File.write(config_path, updated)
-File.write(File.expand_path("~/.xinitrc"), "exec dwm\n")
+
+system "startx"
