@@ -16,15 +16,15 @@ system "cp /Dwm-Script/JetBrainsMonoNerdFont-Regular.ttf /usr/local/share/fonts/
 system "fc-cache -fv"
 st_path = `which st`.strip
 config_path = "config.h"
+system "chmod 644 config.h"
 content = File.read(config_path)
 updated = content.gsub(
-  %r{#define SHCMD\(cmd\) \{ \.v = \(const char\*\[\]\)\{ "/bin/sh", "-c", cmd, NULL \} \}},
-  "#define SHCMD(cmd) { .v = (const char*[]){ \"#{st_path}\", \"-c\", cmd, NULL } }"
+  %r{#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }},
+  "#define SHCMD(cmd) { .v = (const char*[]){ "#{st_path}", "-c", cmd, NULL } }"
 )
 updated = updated.gsub(
-  /static const char \*fonts\[\]\s*=\s*\{[^}]*\};/,
-  'static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=26" };'
+  /static const char fonts[]\s=\s*{[^}]*};/,
+  'static const char *fonts[] = { "JetBrainsMono Nerd Font:size=26" };'
 )
 File.write(config_path, updated)
 File.write(File.expand_path("~/.xinitrc"), "exec dwm\n")
-system "startx"
