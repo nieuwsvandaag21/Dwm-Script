@@ -1,3 +1,5 @@
+require 'fileutils'
+
 system "clear"
 
 print "Make Sure To Have Updated Your Linux System Before Running This Program " \
@@ -26,10 +28,10 @@ current_user = `whoami`.strip
 system "sudo chown -R #{current_user}:#{current_user} dwm st"
 
 system "sudo mkdir -p /usr/local/share/fonts/"
-system "sudo cp /Dwm-Script/JetBrainsMonoNerdFont-Regular.ttf /usr/local/share/fonts/"
+FileUtils.cp('/Dwm-Script/JetBrainsMonoNerdFont-Regular.ttf', '/usr/local/share/fonts/')
 system "fc-cache -fv"
 
-system "cp /Dwm-Script/config.h /dwm"
+FileUtils.cp('/Dwm-Script/config.h', '/dwm')
 
 Dir.chdir("dwm")
 st_path     = `which st`.strip
