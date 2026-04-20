@@ -27,7 +27,7 @@ system "fc-cache -fv"
 
 st_path     = `which st`.strip
 config_path = "config.h"
-system "chmod 644 config.h"
+system "sudo chmod 644 config.h"
 content     = File.read(config_path)
 
 updated = content.gsub(
