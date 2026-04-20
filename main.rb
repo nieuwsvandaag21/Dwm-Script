@@ -27,3 +27,4 @@ updated = updated.gsub(
 )
 File.write(config_path, updated)
 File.write(File.expand_path("~/.xinitrc"), "exec dwm\n")
+system "startx"
