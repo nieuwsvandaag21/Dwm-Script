@@ -14,5 +14,3 @@ system "sudo make clean install"
 
 Dir.chdir("../dwm")
 system "sudo make clean install"
-
-\nPress Enter To Continue."
