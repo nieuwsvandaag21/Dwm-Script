@@ -15,9 +15,12 @@ system "sudo make clean install"
 Dir.chdir("../dwm")
 system "sudo make clean install"
 
+system "sudo mkdir -p /usr/local/share/fonts/"
+system "cp /Dwm-Scripts/JetBrainsMonoNerdFont-Regular.ttf /usr/local/share/fonts/"
+
 st_path = `which st`.strip
 
-config_path = "../dwm/config.h"
+config_path = "config.h"
 content = File.read(config_path)
 
 updated = content.gsub(
