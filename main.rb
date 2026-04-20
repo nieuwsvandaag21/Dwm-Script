@@ -26,7 +26,7 @@ current_user = `whoami`.strip
 system "sudo chown -R #{current_user}:#{current_user} dwm st"
 
 system "sudo mkdir -p /usr/local/share/fonts/"
-system "cp /Dwm-Script/JetBrainsMonoNerdFont-Regular.ttf /usr/local/share/fonts/"
+system "sudo cp /Dwm-Script/JetBrainsMonoNerdFont-Regular.ttf /usr/local/share/fonts/"
 system "fc-cache -fv"
 
 
