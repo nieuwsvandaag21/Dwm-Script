@@ -14,3 +14,15 @@ system "sudo make clean install"
 
 Dir.chdir("../dwm")
 system "sudo make clean install"
+
+st_path = `which st`.strip
+
+config_path = "../dwm/config.h"
+content = File.read(config_path)
+
+updated = content.gsub(
+  %r{#define SHCMD\(cmd\) \{ \.v = \(const char\*\[\]\)\{ "/bin/sh", "-c", cmd, NULL \} \}},
+  "#define SHCMD(cmd) { .v = (const char*[]){ \"#{st_path}\", \"-c\", cmd, NULL } }"
+)
+
+File.write(config_path, updated)
