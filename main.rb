@@ -26,8 +26,10 @@ current_user = `whoami`.strip
 system "sudo chown -R #{current_user}:#{current_user} dwm st"
 
 system "sudo mkdir -p /usr/local/share/fonts/"
-system "cp ~/Dwm-Script/JetBrainsMonoNerdFont-Regular.ttf /usr/local/share/fonts/"
+system "cp /Dwm-Script/JetBrainsMonoNerdFont-Regular.ttf /usr/local/share/fonts/"
 system "fc-cache -fv"
+
+
 
 Dir.chdir("dwm")
 st_path     = `which st`.strip
@@ -38,7 +40,5 @@ updated = content.gsub(
   %r{#define SHCMD\(cmd\) \{ \.v = \(const char\*\[\]\)\{ "/bin/sh", "-c", cmd, NULL \} \}},
   "#define SHCMD(cmd) { .v = (const char*[]){ \"#{st_path}\", \"-c\", cmd, NULL } }"
 )
-
-
 
 system "startx"
