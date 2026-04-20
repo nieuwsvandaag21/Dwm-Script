@@ -1,4 +1,10 @@
 system "clear"
-puts "Make Sure To Have Updated Your Linux System Before Running This Program!\nPress Enter To Continue."
+puts "Make Sure To Have Updated Your Linux System Before Running This Program And To Run It In The Directory You Want Your Dwm And St Directories Make Sure Of This By Using "pwd" The Output Should Show Your Current Directory!\nPress Enter To Continue."
 gets
-system "sudo pacman -S base-devel git --noconfirm"
+system "sudo pacman -S base-devel git xorg-server xorg-xinit libx11 libxinerama libxft --noconfirm"
+system "git clone https://git.suckless.org/dwm"
+system "git clone https://git.suckless.org/st"
+system "cd st"
+system "sudo make clean install"
+system "cd ../dwm"
+system "sudo make clean install"
