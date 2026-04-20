@@ -4,13 +4,13 @@ system ("cd .. && pwd")
 print "!\nPress Enter To Continue."
 gets
 system "sudo pacman -S base-devel git xorg-server xorg-xinit libx11 libxinerama libxft --noconfirm"
-system "cd .."
+
+Dir.chdir("..")
 system "git clone https://git.suckless.org/dwm"
 system "git clone https://git.suckless.org/st"
-system "cd st"
-system "sudo make clean install"
-system "cd ../dwm"
+
+Dir.chdir("st")
 system "sudo make clean install"
 
-
-\nPress Enter To Continue."
+Dir.chdir("../dwm")
+system "sudo make clean install"
