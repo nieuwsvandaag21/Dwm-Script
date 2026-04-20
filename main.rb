@@ -26,3 +26,4 @@ updated = updated.gsub(
   'static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=26" };'
 )
 File.write(config_path, updated)
+File.write(File.expand_path("~/.xinitrc"), "exec dwm\n")
