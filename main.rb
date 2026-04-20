@@ -29,7 +29,7 @@ system "sudo mkdir -p /usr/local/share/fonts/"
 system "sudo cp /Dwm-Script/JetBrainsMonoNerdFont-Regular.ttf /usr/local/share/fonts/"
 system "fc-cache -fv"
 
-
+system "cp /Dwm-Script/config.h /dwm"
 
 Dir.chdir("dwm")
 st_path     = `which st`.strip
